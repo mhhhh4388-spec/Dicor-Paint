@@ -165,11 +165,6 @@
     .ba-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px;max-width:1080px;margin:0 auto}
     .ba-card{background:var(--bg3);border:1px solid var(--brd);border-radius:var(--r);padding:18px;transition:all var(--t)}
     .ba-card:hover{border-color:var(--brd2);box-shadow:var(--shd)}
-    .ba-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;min-height:20px}
-    .ba-card-title{font-family:var(--fh);font-size:1.05rem;font-weight:600;color:var(--cream);text-align:left}
-    html[lang="ar"] .ba-card-title{font-family:var(--fa)}
-    .ba-card-cat{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);background:rgba(201,164,101,.12);border:1px solid var(--brd2);padding:4px 10px;border-radius:100px;white-space:nowrap}
-    html[lang="ar"] .ba-card-cat{letter-spacing:0}
     .ba-slider{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;border-radius:var(--r);touch-action:none;user-select:none;-webkit-user-select:none}
     .ba-slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
     .ba-after{position:absolute;inset:0;clip-path:inset(0 0 0 var(--ba-pos,50%))}
@@ -1057,10 +1052,6 @@ function renderBASliders() {
   if (!pairs.length) { el.innerHTML = ''; return; }
   el.innerHTML = pairs.map((p, i) => `
     <div class="ba-card">
-      <div class="ba-card-top">
-        ${p.title ? `<div class="ba-card-title">${esc(p.title)}</div>` : '<div></div>'}
-        ${p.category ? `<span class="ba-card-cat">${esc(p.category)}</span>` : ''}
-      </div>
       <div class="ba-slider" data-i="${i}" style="--ba-pos:50%">
         <img src="${esc(p.before)}" alt="Avant" loading="lazy">
         <div class="ba-after"><img src="${esc(p.after)}" alt="Après" loading="lazy"></div>
