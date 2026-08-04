@@ -61,19 +61,32 @@ export default {
     {
       name: 'baPairs',
       title: 'Before / After Pairs / صور قبل وبعد',
-      description: 'Image pairs for the Before/After comparison section. They rotate automatically.',
+      description: 'Image pairs for the Before/After comparison section. Each pair is an interactive drag-to-compare slider.',
       type: 'array',
       of: [
         {
           type: 'object',
           fields: [
+            {
+              name: 'title',
+              title: 'Project Title / عنوان المشروع',
+              type: 'string',
+              description: 'Optional short name shown above the slider, e.g. "Salon", "Chambre", "Villa".',
+            },
+            {
+              name: 'category',
+              title: 'Project / Category / المشروع',
+              type: 'string',
+              description: 'Optional label shown as a badge, e.g. "Appartement", "Villa", "Bureau".',
+            },
             { name: 'before', title: 'Before Image / صورة قبل', type: 'image', options: { hotspot: true }, validation: R => R.required() },
             { name: 'after',  title: 'After Image / صورة بعد',  type: 'image', options: { hotspot: true }, validation: R => R.required() },
           ],
           preview: {
-            select: { before: 'before.asset->url', after: 'after.asset->url' },
+            select: { title: 'title', category: 'category', before: 'before.asset->url', after: 'after.asset->url' },
             prepare(sel) {
-              return { title: 'Before / After', subtitle: sel.before && sel.after ? '✓ 2 images' : 'Missing image' };
+              const label = [sel.title, sel.category].filter(Boolean).join(' — ') || 'Before / After';
+              return { title: label, subtitle: sel.before && sel.after ? '✓ 2 images' : 'Missing image' };
             },
           },
         },

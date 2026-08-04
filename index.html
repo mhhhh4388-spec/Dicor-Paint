@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
@@ -155,20 +156,26 @@
     .pc-cat-btn{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:10px 20px;background:linear-gradient(135deg,var(--gold),var(--bronze));color:#0d0d0d;font-size:10.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;border-radius:var(--r);transition:all var(--t)}
     .pc-cat-btn:hover{background:linear-gradient(135deg,var(--gold-lt),var(--gold));color:#0d0d0d;transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,164,101,.28)}
     .pc-cat-btn svg{width:14px;height:14px}
-    .ba-section{margin-top:40px;text-align:center;padding:20px;background-color:#f9f9f9;border-radius:12px;border:1px solid var(--brd)}
-    .ba-title{margin-bottom:20px;font-size:1.4em;color:#333;font-family:var(--fh)}
+    .ba-section{margin-top:40px;text-align:center;padding:20px;background-color:var(--bg2);border-radius:12px;border:1px solid var(--brd)}
+    .ba-title{margin-bottom:24px;font-size:1.4em;color:var(--cream);font-family:var(--fh)}
     html[lang="ar"] .ba-title{font-family:var(--fa)}
-    .ba-slideshow{position:relative;width:100%;max-width:800px;margin:0 auto;overflow:hidden;border-radius:12px;aspect-ratio:16/9;min-height:200px}
-    .ba-slide{position:absolute;inset:0;display:flex;opacity:0;transition:opacity .6s ease;pointer-events:none}
-    .ba-slide.active{opacity:1;pointer-events:auto}
-    .ba-slide .ba-img-box{flex:1;position:relative;min-width:0}
-    .ba-slide .ba-img-box img{width:100%;height:100%;object-fit:cover;display:block}
-    .ba-slide .ba-tag{position:absolute;bottom:15px;left:15px;color:#fff;padding:5px 15px;border-radius:4px;font-weight:bold;font-size:13px}
-    .ba-slide .ba-tag-before{background:rgba(0,0,0,.7)}
-    .ba-slide .ba-tag-after{background:rgba(46,204,113,.9)}
-    .ba-dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
-    .ba-dot{width:10px;height:10px;border-radius:50%;background:#ccc;border:none;cursor:pointer;transition:background .2s;padding:0}
-    .ba-dot.active{background:var(--gold,#c9a84c)}
+    .ba-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px;max-width:1080px;margin:0 auto}
+    .ba-card{background:var(--bg3);border:1px solid var(--brd);border-radius:var(--r);padding:18px;transition:all var(--t)}
+    .ba-card:hover{border-color:var(--brd2);box-shadow:var(--shd)}
+    .ba-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;min-height:20px}
+    .ba-card-title{font-family:var(--fh);font-size:1.05rem;font-weight:600;color:var(--cream);text-align:left}
+    html[lang="ar"] .ba-card-title{font-family:var(--fa)}
+    .ba-card-cat{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);background:rgba(201,164,101,.12);border:1px solid var(--brd2);padding:4px 10px;border-radius:100px;white-space:nowrap}
+    html[lang="ar"] .ba-card-cat{letter-spacing:0}
+    .ba-slider{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;border-radius:var(--r);touch-action:none;user-select:none;-webkit-user-select:none}
+    .ba-slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+    .ba-after{position:absolute;inset:0;clip-path:inset(0 0 0 var(--ba-pos,50%))}
+    .ba-handle{position:absolute;top:0;bottom:0;left:var(--ba-pos,50%);width:4px;background:rgba(255,255,255,.92);box-shadow:0 0 0 1px rgba(0,0,0,.35);transform:translateX(-50%);cursor:ew-resize;z-index:3}
+    .ba-handle::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:rgba(8,8,8,.78);border:2px solid var(--gold);box-shadow:0 4px 18px rgba(0,0,0,.55)}
+    .ba-handle::before{content:'⇄';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--gold);font-size:16px;font-weight:700;z-index:1;line-height:1}
+    .ba-tag{position:absolute;bottom:12px;left:12px;color:#fff;padding:4px 12px;border-radius:4px;font-weight:bold;font-size:12px;z-index:2;pointer-events:none;letter-spacing:.5px}
+    .ba-tag-before{background:rgba(0,0,0,.7)}
+    .ba-tag-after{background:rgba(46,204,113,.9);left:auto;right:12px}
     .pc-t{font-family:var(--fh);font-size:1.22rem;font-weight:600;color:var(--cream);margin-bottom:9px}
     html[lang="ar"] .pc-t{font-family:var(--fa)}
     .pc-d{font-size:13.5px;color:var(--txt2);line-height:1.72}
@@ -281,6 +288,7 @@
     html[dir="rtl"] .toast{left:28px}
     .toast.on{transform:translateY(0);opacity:1}
 
+
     /* ── preview bar (Sanity Studio) ────────── */
     .preview-bar{position:fixed;top:52px;left:0;right:0;z-index:1002;display:flex;align-items:center;justify-content:center;gap:8px;padding:7px 14px;background:linear-gradient(135deg,#7a5820,#c9a465);color:#0d0d0d;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
     html[lang="ar"] .preview-bar{letter-spacing:0;font-family:var(--fa)}
@@ -349,7 +357,8 @@
       .cat-btn{width:100%;justify-content:center;padding:14px 22px;font-size:11px;letter-spacing:1.5px}
       .ph{margin-bottom:44px}
       .ba-section{padding:14px}
-      .ba-slide .ba-tag{bottom:10px;left:10px;padding:3px 10px;font-size:11px}
+      .ba-list{grid-template-columns:1fr}
+      .ba-card{padding:14px}
     }
 
     @keyframes fup{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
@@ -552,9 +561,10 @@
 
     <div class="ba-section" id="BAS">
       <h4 class="ba-title" data-i18n="ba_title">Résultat : Avant / Après</h4>
-      <div class="ba-slideshow" id="BASLID"></div>
-      <div class="ba-dots" id="BADOTS"></div>
+      <p class="sub" style="margin:0 auto 26px;font-size:12.5px" data-i18n="ba_hint">Faites glisser le curseur pour comparer</p>
+      <div class="ba-list" id="BASLID"></div>
     </div>
+
 
 </div></section>
 <!-- ══════════════════════════════════════════════════════
@@ -835,6 +845,7 @@ const D = {
   ba_title:{fr:'Résultat : Avant / Après',en:'Result: Before / After',ar:'النتيجة : قبل / بعد'},
   ba_before:{fr:'Avant',en:'Before',ar:'قبل'},
   ba_after:{fr:'Après',en:'After',ar:'بعد'},
+  ba_hint:{fr:'Faites glisser le curseur pour comparer',en:'Drag the handle to compare',ar:'اسحب المؤشر للمقارنة'},
 };
 
 /* ════════════════════════════════════════════════════════
@@ -860,6 +871,7 @@ function setLang(l) {
   renderBranches();
   renderFooter();
   renderBranchSelect();
+  renderBASliders();
   if (LAST_CATS) renderDynamicSections(LAST_CATS, LAST_PRODUCTS);
 }
 
@@ -964,7 +976,7 @@ function buildQuickBar() {
   if (parts.length) qc.innerHTML = parts.join('');
 }
 async function loadSettings() {
-  const r = PREVIEW ? PREVIEW.settings : await sanityFetch(`*[_type == 'siteSettings'][0]{ whatsapp, phone1, phone2, facebook, email, slideshowEnabled, slideshowInterval, slideshowPauseOnHover, "baPairs": baPairs[]{ "before": before.asset->url, "after": after.asset->url } }`);
+  const r = PREVIEW ? PREVIEW.settings : await sanityFetch(`*[_type == 'siteSettings'][0]{ whatsapp, phone1, phone2, facebook, email, slideshowEnabled, slideshowInterval, slideshowPauseOnHover, "baPairs": baPairs[]{ title, category, "before": before.asset->url, "after": after.asset->url } }`);
   if (!r) return;
   S = r;
   buildQuickBar();
@@ -976,60 +988,64 @@ async function loadSettings() {
     const b = r.phone2 ? `<a href="tel:+${String(r.phone2).replace(/\D/g,'')}" style="color:inherit">${fmtTel(r.phone2)}</a>` : '';
     tt.innerHTML = 'Tel : ' + [a, b].filter(Boolean).join(' - ');
   }
-  renderBASlideshow();
+  renderBASliders();
 }
 
-/* ── BA slideshow ────────────────────────── */
-let BA_PAIRS = [], BA_IDX = 0, BA_TIMER = null;
+/* ── Before/After comparison sliders ───────── */
 const DEFAULT_BA = [
-  { before: '480250861_624864696808719_794406399008617300_n.jpg', after: '480213260_624864516808737_7053424218306797544_n.jpg' },
+  { title:'Salon',                 category:'Appartement', before:'480250861_624864696808719_794406399008617300_n.jpg', after:'480213260_624864516808737_7053424218306797544_n.jpg' },
+  { title:'Salle de bain',         category:'Appartement', before:'Untitled.jpeg',                                        after:'showroom-decorpaint.png' },
+  { title:'Façade',                category:'Villa',        before:'page-01-decorpaint.png',                             after:'480250861_624864696808719_794406399008617300_n.jpg' },
 ];
 
-function renderBASlideshow() {
+function renderBASliders() {
   const el = document.getElementById('BASLID');
-  const dots = document.getElementById('BADOTS');
   if (!el) return;
-  BA_PAIRS = (S && S.baPairs && S.baPairs.length) ? S.baPairs : DEFAULT_BA;
-  if (!BA_PAIRS.length) { el.innerHTML = ''; if (dots) dots.innerHTML = ''; return; }
-  BA_IDX = 0;
-  el.innerHTML = BA_PAIRS.map((p, i) => `
-    <div class="ba-slide${i === 0 ? ' active' : ''}">
-      <div class="ba-img-box">
-        <img src="${esc(p.before)}" alt="Avant">
-        <div class="ba-tag ba-tag-before" data-i18n="ba_before">Avant</div>
+  const pairs = (S && S.baPairs && S.baPairs.length) ? S.baPairs : DEFAULT_BA;
+  if (!pairs.length) { el.innerHTML = ''; return; }
+  el.innerHTML = pairs.map((p, i) => `
+    <div class="ba-card">
+      <div class="ba-card-top">
+        ${p.title ? `<div class="ba-card-title">${esc(p.title)}</div>` : '<div></div>'}
+        ${p.category ? `<span class="ba-card-cat">${esc(p.category)}</span>` : ''}
       </div>
-      <div class="ba-img-box">
-        <img src="${esc(p.after)}" alt="Après">
-        <div class="ba-tag ba-tag-after" data-i18n="ba_after">Après</div>
+      <div class="ba-slider" data-i="${i}" style="--ba-pos:50%">
+        <img src="${esc(p.before)}" alt="Avant" loading="lazy">
+        <div class="ba-after"><img src="${esc(p.after)}" alt="Après" loading="lazy"></div>
+        <div class="ba-handle"></div>
+        <div class="ba-tag ba-tag-before">${t('ba_before')}</div>
+        <div class="ba-tag ba-tag-after">${t('ba_after')}</div>
       </div>
     </div>`).join('');
-  if (dots) {
-    if (BA_PAIRS.length > 1) {
-      dots.innerHTML = BA_PAIRS.map((_, i) =>
-        `<button class="ba-dot${i === 0 ? ' active' : ''}" data-i="${i}"></button>`
-      ).join('');
-      dots.onclick = e => { const b = e.target.closest('.ba-dot'); if (b) { BA_IDX = +b.dataset.i; showBASlide(BA_IDX); resetBATimer(); } };
-    } else { dots.innerHTML = ''; }
-  }
-  if (S.slideshowEnabled !== false && BA_PAIRS.length > 1) startBATimer();
+  document.querySelectorAll('.ba-slider').forEach(s => initBASlider(s));
 }
-function showBASlide(idx) {
-  const slides = document.querySelectorAll('.ba-slide');
-  const dots = document.querySelectorAll('.ba-dot');
-  if (!slides.length) return;
-  BA_IDX = ((idx % slides.length) + slides.length) % slides.length;
-  slides.forEach((s, i) => s.classList.toggle('active', i === BA_IDX));
-  dots.forEach((d, i) => d.classList.toggle('active', i === BA_IDX));
+
+function initBASlider(slider) {
+  const setPos = x => {
+    const r = slider.getBoundingClientRect();
+    const pct = Math.max(0, Math.min(100, ((x - r.left) / r.width) * 100));
+    slider.style.setProperty('--ba-pos', pct + '%');
+  };
+  let dragging = false;
+  const onMove = e => { if (dragging) { const x = (e.touches && e.touches[0]) ? e.touches[0].clientX : e.clientX; setPos(x); } };
+  slider.addEventListener('pointerdown', e => { dragging = true; slider.setPointerCapture(e.pointerId); setPos(e.clientX); });
+  slider.addEventListener('pointermove', onMove);
+  slider.addEventListener('pointerup',   () => { dragging = false; });
+  slider.addEventListener('pointercancel', () => { dragging = false; });
+  slider.addEventListener('keydown', e => {
+    const step = e.key === 'ArrowLeft' ? -5 : e.key === 'ArrowRight' ? 5 : 0;
+    if (!step) return;
+    e.preventDefault();
+    const cur = parseFloat(slider.style.getPropertyValue('--ba-pos')) || 50;
+    slider.style.setProperty('--ba-pos', Math.max(0, Math.min(100, cur + step)) + '%');
+  });
+  slider.setAttribute('tabindex', '0');
+  slider.setAttribute('role', 'slider');
+  slider.setAttribute('aria-label', t('ba_title'));
+  slider.setAttribute('aria-valuemin', '0');
+  slider.setAttribute('aria-valuemax', '100');
+  slider.setAttribute('aria-valuenow', '50');
 }
-function startBATimer() { stopBATimer(); BA_TIMER = setInterval(() => showBASlide(BA_IDX + 1), (S.slideshowInterval || 3) * 1000); }
-function stopBATimer() { if (BA_TIMER) { clearInterval(BA_TIMER); BA_TIMER = null; } }
-function resetBATimer() { if (S && S.slideshowEnabled !== false) startBATimer(); else stopBATimer(); }
-(function() {
-  const basEl = document.getElementById('BAS');
-  if (!basEl) return;
-  basEl.addEventListener('mouseenter', () => { if (S && S.slideshowPauseOnHover !== false) stopBATimer(); });
-  basEl.addEventListener('mouseleave', resetBATimer);
-})();
 async function loadBranches() {
   const r = PREVIEW ? PREVIEW.branches : await sanityFetch(`*[_type == 'branch'] | order(order asc){ name, nameEn, nameAr, region, regionEn, regionAr, phone, whatsapp, "lat": gps.lat, "lng": gps.lng }`);
   if (!r || !r.length) return;
