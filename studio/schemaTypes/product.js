@@ -48,17 +48,37 @@ export default {
       title: 'Description',
       type: 'text',
     },
+    // --- Catalogue PDF (per product) ---
+    {
+      name: 'catalog',
+      title: 'Catalogue PDF',
+      description: 'الكتالوج الخاص بهذا المنتج — Fichier PDF du catalogue de ce produit. Uploadé depuis Sanity, affiché sur la carte du produit.',
+      type: 'file',
+      options: {
+        accept: 'application/pdf',
+        storeOriginalFilename: true,
+      },
+    },
+    {
+      name: 'catalogLabel',
+      title: 'Catalogue Button Text (optional)',
+      description: 'Texte du bouton catalogue (défaut : "Catalogue"). نص زر الكتالوج (افتراضياً: "الكتالوج").',
+      type: 'string',
+    },
+    // ----------------------------
     {
       name: 'category',
-      title: 'Catégorie',
+      title: 'Catégorie (key)',
       type: 'string',
-      options: {
-        list: [
-          {title: 'Intérieure', value: 'interior'},
-          {title: 'Extérieure', value: 'exterior'}
-        ],
-        layout: 'radio'
-      }
+      initialValue: 'interior',
+      description: 'Use the Key of a Product Category document (e.g. interior, exterior, metal...). Manage categories in "Product Category".',
     },
   ],
+  preview: {
+    select: {
+      title: 'title',
+      subtitle: 'category',
+      media: 'image',
+    },
+  },
 }

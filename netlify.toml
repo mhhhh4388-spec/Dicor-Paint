@@ -1,6 +1,11 @@
 plugins = []
-headers = []
-redirects = []
+
+# Allow the Sanity Studio (hosted elsewhere) to fetch the site HTML
+# for the "Aperçu / معاينة" full-site preview before publishing.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
 
 [dev]
 command = "npm run dev"

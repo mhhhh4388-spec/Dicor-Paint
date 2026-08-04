@@ -144,23 +144,31 @@
     .pc:hover::before{transform:scaleX(1)}
     .pc-ic{font-size:26px;margin-bottom:14px}
     .pc-img{position:relative;overflow:hidden;border-radius:var(--r);margin:-26px -26px 18px}
-    .pc-img img{width:100%;height:170px;object-fit:cover}
-    .pc-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(13,13,13,.35))}
-    .pc-img-fb{height:170px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 30% 20%,rgba(201,164,101,.16),rgba(13,13,13,.35))}
+    .pc-img img{width:100%;aspect-ratio:1/1;object-fit:cover}
+    .pc-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(13,13,13,.35));pointer-events:none}
+    .pc-img-fb{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 30% 20%,rgba(201,164,101,.16),rgba(13,13,13,.35))}
     .pc-img::before{content:'';position:absolute;top:50%;left:50%;width:54px;height:54px;transform:translate(-50%,-50%) scale(.6);background:rgba(8,8,8,.62) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='none' stroke='%23e2c48e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") center/20px no-repeat;border-radius:50%;border:1px solid var(--brd2);opacity:0;transition:all var(--t);z-index:2;pointer-events:none}
     .pc:hover .pc-img::before{opacity:1;transform:translate(-50%,-50%) scale(1)}
     .product-gallery-list{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;justify-content:center}
     .product-gallery-list img{width:56px;height:56px;object-fit:cover;border-radius:6px;border:1px solid rgba(201,164,101,.3);transition:all var(--t);cursor:zoom-in}
     .product-gallery-list img:hover{transform:scale(1.15);border-color:var(--gold)}
+    .pc-cat-btn{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:10px 20px;background:linear-gradient(135deg,var(--gold),var(--bronze));color:#0d0d0d;font-size:10.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;border-radius:var(--r);transition:all var(--t)}
+    .pc-cat-btn:hover{background:linear-gradient(135deg,var(--gold-lt),var(--gold));color:#0d0d0d;transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,164,101,.28)}
+    .pc-cat-btn svg{width:14px;height:14px}
     .ba-section{margin-top:40px;text-align:center;padding:20px;background-color:#f9f9f9;border-radius:12px;border:1px solid var(--brd)}
     .ba-title{margin-bottom:20px;font-size:1.4em;color:#333;font-family:var(--fh)}
     html[lang="ar"] .ba-title{font-family:var(--fa)}
-    .ba-container{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
-    .ba-img-box{position:relative;max-width:45%;flex:1 1 280px}
-    .ba-img-box img{width:100%;height:auto;border-radius:8px;box-shadow:0 4px 8px rgba(0,0,0,.1);display:block}
-    .ba-tag{position:absolute;bottom:15px;left:15px;color:#fff;padding:5px 15px;border-radius:4px;font-weight:bold}
-    .ba-tag-before{background:rgba(0,0,0,.7)}
-    .ba-tag-after{background:rgba(46,204,113,.9)}
+    .ba-slideshow{position:relative;width:100%;max-width:800px;margin:0 auto;overflow:hidden;border-radius:12px;aspect-ratio:16/9;min-height:200px}
+    .ba-slide{position:absolute;inset:0;display:flex;opacity:0;transition:opacity .6s ease;pointer-events:none}
+    .ba-slide.active{opacity:1;pointer-events:auto}
+    .ba-slide .ba-img-box{flex:1;position:relative;min-width:0}
+    .ba-slide .ba-img-box img{width:100%;height:100%;object-fit:cover;display:block}
+    .ba-slide .ba-tag{position:absolute;bottom:15px;left:15px;color:#fff;padding:5px 15px;border-radius:4px;font-weight:bold;font-size:13px}
+    .ba-slide .ba-tag-before{background:rgba(0,0,0,.7)}
+    .ba-slide .ba-tag-after{background:rgba(46,204,113,.9)}
+    .ba-dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
+    .ba-dot{width:10px;height:10px;border-radius:50%;background:#ccc;border:none;cursor:pointer;transition:background .2s;padding:0}
+    .ba-dot.active{background:var(--gold,#c9a84c)}
     .pc-t{font-family:var(--fh);font-size:1.22rem;font-weight:600;color:var(--cream);margin-bottom:9px}
     html[lang="ar"] .pc-t{font-family:var(--fa)}
     .pc-d{font-size:13.5px;color:var(--txt2);line-height:1.72}
@@ -184,7 +192,9 @@
     .bh .bar,.bh .sub{margin-left:auto;margin-right:auto}
     .bc{background:var(--bg3);border:1px solid var(--brd);border-radius:var(--r);overflow:hidden;transition:all var(--t)}
     .bc:hover{border-color:var(--brd2);transform:translateY(-4px);box-shadow:var(--shd)}
-    .bc-t{background:linear-gradient(135deg,rgba(201,164,101,.09),transparent);padding:26px 26px 18px;border-bottom:1px solid var(--brd)}
+    .bc-t{position:relative;background:url('Untitled.jpeg') center/cover no-repeat;padding:26px 26px 18px;border-bottom:1px solid var(--brd);overflow:hidden}
+    .bc-t::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,8,.78),rgba(13,13,13,.5));z-index:0}
+    .bc-t>*{position:relative;z-index:1}
     .bc-n0{font-family:var(--fh);font-size:2.6rem;font-weight:700;color:rgba(201,164,101,.13);line-height:1;margin-bottom:10px}
     .bc-nm{font-family:var(--fh);font-size:1.55rem;font-weight:600;color:var(--cream)}
     html[lang="ar"] .bc-nm{font-family:var(--fa)}
@@ -201,6 +211,20 @@
     .bc-val{font-size:14px;color:var(--txt);font-weight:500}
     .wa-btn{display:inline-flex;align-items:center;gap:7px;margin-top:14px;padding:9px 18px;background:rgba(37,211,102,.09);border:1px solid rgba(37,211,102,.28);border-radius:var(--r);color:#25d366;font-size:12px;font-weight:500;letter-spacing:.8px;text-transform:uppercase;transition:all var(--t)}
     .wa-btn:hover{background:rgba(37,211,102,.18);color:#25d366;transform:translateY(-2px)}
+    .gps-btn{background:rgba(201,164,101,.09);border:1px solid rgba(201,164,101,.3);color:var(--gold)}
+    .gps-btn:hover{background:rgba(201,164,101,.18);color:var(--gold-lt)}
+    .wa-card{display:flex;align-items:center;gap:12px;width:100%;margin-top:14px;padding:11px 14px;background:linear-gradient(135deg,rgba(37,211,102,.14),rgba(37,211,102,.04));border:1px solid rgba(37,211,102,.32);border-radius:10px;color:#25d366;transition:all var(--t);text-decoration:none}
+    .wa-card:hover{background:linear-gradient(135deg,rgba(37,211,102,.22),rgba(37,211,102,.08));color:#25d366;transform:translateY(-2px);box-shadow:0 10px 26px rgba(37,211,102,.22)}
+    .wa-img{width:42px;height:42px;object-fit:cover;border-radius:50%;border:1px solid rgba(37,211,102,.45);flex-shrink:0;background:var(--bg2)}
+    .wa-info{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-width:0}
+    .wa-lbl{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--txt2);font-weight:600}
+    .wa-name{font-size:13.5px;font-weight:600;color:var(--txt);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+    .wa-card:hover .wa-name{color:var(--gold-lt)}
+
+    /* keep phone/WhatsApp numbers LTR even in Arabic RTL layout */
+    html[dir="rtl"] .quick-call-btn,
+    html[dir="rtl"] .bc-val a,
+    html[dir="rtl"] .ft-ci-r a{direction:ltr;unicode-bidi:isolate}
 
     /* ── contact ────────────────────────────── */
     .con-sec{background:var(--bg2);border-top:1px solid var(--brd)}
@@ -257,6 +281,10 @@
     html[dir="rtl"] .toast{left:28px}
     .toast.on{transform:translateY(0);opacity:1}
 
+    /* ── preview bar (Sanity Studio) ────────── */
+    .preview-bar{position:fixed;top:52px;left:0;right:0;z-index:1002;display:flex;align-items:center;justify-content:center;gap:8px;padding:7px 14px;background:linear-gradient(135deg,#7a5820,#c9a465);color:#0d0d0d;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+    html[lang="ar"] .preview-bar{letter-spacing:0;font-family:var(--fa)}
+
     /* ── lightbox ──────────────────────────── */
     .lightbox{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;padding:20px}
     .lightbox.on{display:flex;animation:fup .25s ease}
@@ -264,6 +292,13 @@
     .lightbox-close{position:absolute;top:16px;right:20px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.08);color:var(--cream);font-size:24px;line-height:1;cursor:pointer;transition:all var(--t);z-index:2}
     .lightbox-close:hover{background:rgba(201,164,101,.28);color:var(--gold-lt);transform:rotate(90deg)}
     html[dir="rtl"] .lightbox-close{right:auto;left:20px}
+    .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.08);color:var(--cream);font-size:22px;line-height:1;cursor:pointer;transition:all var(--t);z-index:2;user-select:none}
+    .lb-nav:hover{background:rgba(201,164,101,.28);color:var(--gold-lt)}
+    .lb-prev{left:16px}
+    .lb-next{right:16px}
+    html[dir="rtl"] .lb-prev{left:auto;right:16px}
+    html[dir="rtl"] .lb-next{right:auto;left:16px}
+    .lb-count{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.62);color:var(--cream);font-size:12px;letter-spacing:1px;padding:6px 14px;border-radius:20px;z-index:2;pointer-events:none}
 
     /* ── responsive ─────────────────────────── */
     html{scroll-padding-top:130px}
@@ -281,7 +316,10 @@
     }
     @media(max-width:768px){
       .sec{padding:60px 0}
-      .hiw{display:none}
+      .hiw{display:block;margin:38px 0 30px}
+      .hif img{height:340px}
+      html[dir="ltr"] .hbg{left:16px}
+      html[dir="rtl"] .hbg{right:16px}
       .g2,.g3,.g4{grid-template-columns:1fr}
       .st-g{grid-template-columns:repeat(2,1fr)}
       .st-i{border-right:none;border-bottom:1px solid var(--brd)}
@@ -295,21 +333,23 @@
       .ha{flex-direction:column}
       .ha .btn{width:100%;justify-content:center}
       .hero{padding:90px 0 56px}
+      .contact-numbers{height:auto;min-height:52px;gap:6px;padding:6px 8px;justify-content:center;flex-wrap:wrap}
     }
     @media(max-width:480px){
       .wrap{padding:0 18px}
       .st-g{grid-template-columns:1fr}
       .fcard{padding:22px}
-      .contact-numbers{height:auto;min-height:52px;gap:6px;padding:6px 8px;justify-content:flex-start}
+      .contact-numbers{gap:4px;padding:6px 6px}
       .quick-call-btn{padding:7px 11px;font-size:11px;gap:5px}
       .st-n{font-size:2.2rem}
       .hbn{font-size:28px}
+      .hif img{height:280px}
+      .hbg{padding:14px 18px}
       .ft-bd{max-width:100%}
-      .pc-img img{height:150px}
       .cat-btn{width:100%;justify-content:center;padding:14px 22px;font-size:11px;letter-spacing:1.5px}
       .ph{margin-bottom:44px}
       .ba-section{padding:14px}
-      .ba-img-box{max-width:100%;flex:1 1 100%}
+      .ba-slide .ba-tag{bottom:10px;left:10px;padding:3px 10px;font-size:11px}
     }
 
     @keyframes fup{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
@@ -318,7 +358,7 @@
 </head>
 <body>
 
-<div class="contact-numbers">
+<div class="contact-numbers" id="QC">
     <a href="https://www.facebook.com/share/1Ha8yxPw4N/" class="quick-call-btn fb" target="_blank" rel="noopener">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.026 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.971H15.83c-1.491 0-1.956.93-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
         Facebook
@@ -330,6 +370,8 @@
     <a href="tel:+21620603970" class="quick-call-btn phn">📞 20 603 970</a>
     <a href="tel:+21625474035" class="quick-call-btn phn">📞 25 474 035</a>
 </div>
+
+<div class="preview-bar" id="PREVIEWBAR" style="display:none">👁 Mode Aperçu — modifications non publiées / وضع المعاينة — تعديلات غير منشورة</div>
 
 <!-- ══════════════════════════════════════════════════════
      NAV
@@ -424,6 +466,8 @@
       <p class="sub" data-i18n="pt_sub">Des formulations premium pour chaque usage, intérieur comme extérieur, alliant durabilité et esthétique.</p>
     </div>
 
+    <div id="dynCats"></div>
+
  <!-- INTERIOR -->
     <div class="pcat" id="interior">
       <div class="pch">
@@ -504,26 +548,14 @@
           <div class="pc-d" data-i18n="e6d">Protection anticorrosion pour structures métalliques, portails et menuiseries. Tenue aux chocs et UV.</div>
         </div>
       </div>
-
-      <div class="ba-section">
-        <h4 class="ba-title" data-i18n="ba_title">Résultat : Avant / Après</h4>
-        
-        <div class="ba-container">
-          
-          <div class="ba-img-box">
-            <img src="480250861_624864696808719_794406399008617300_n.jpg" alt="Avant peinture">
-            <div class="ba-tag ba-tag-before" data-i18n="ba_before">Avant</div>
-          </div>
-          
-          <div class="ba-img-box">
-            <img src="480213260_624864516808737_7053424218306797544_n.jpg" alt="Après peinture">
-            <div class="ba-tag ba-tag-after" data-i18n="ba_after">Après</div>
-          </div>
-          
-        </div>
-      </div>
-      
     </div>
+
+    <div class="ba-section" id="BAS">
+      <h4 class="ba-title" data-i18n="ba_title">Résultat : Avant / Après</h4>
+      <div class="ba-slideshow" id="BASLID"></div>
+      <div class="ba-dots" id="BADOTS"></div>
+    </div>
+
 </div></section>
 <!-- ══════════════════════════════════════════════════════
      CATALOG
@@ -582,13 +614,13 @@
           <div>
             <div class="ci-lbl" data-i18n="co_a_l">Sièges & Agences</div>
             <div class="ci-val">
-              <a href="https://www.google.com/maps?q=36.80778,10.10111" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;" data-i18n="co_a_v">Mannouba</a>
+              <a href="https://www.google.com/maps?q=36.8123728433215,10.11717353428965" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;" data-i18n="co_a_v">Mannouba</a>
             </div>
           </div>
         </div>
 
         <div class="ci-row"><div class="ci-ic">🕐</div><div><div class="ci-lbl" data-i18n="co_h_l">Horaires</div><div class="ci-val" data-i18n="co_h_v">Lun–Sam : 08:00 – 17:00</div></div></div>
-        <div class="ci-row"><div class="ci-ic">✉️</div><div><div class="ci-lbl" data-i18n="co_e_l">Email</div><div class="ci-val">DECORPAINT26@gmail.com</div></div></div>
+        <div class="ci-row"><div class="ci-ic">✉️</div><div><div class="ci-lbl" data-i18n="co_e_l">Email</div><div class="ci-val" id="CTEMAIL">DECORPAINT26@gmail.com</div></div></div>
       </div>
       <div>
         <div class="fcard">
@@ -647,7 +679,7 @@
           <div class="ft-ci-n">STE DECOR PAINT</div>
           <div class="ft-ci-a">FABRICATION DE TOUTE SORTE DE PEINTURE ITALIENNE</div>
           <div class="ft-ci-r">Adresse : 001. Hssan Ennouri Ksar Said 2009</div>
-          <div class="ft-ci-r">Tel : <a href="tel:+21620603970" style="color:inherit">20 603 970</a> - <a href="tel:+21625474035" style="color:inherit">25 474 035</a></div>
+          <div class="ft-ci-r" id="FTTEL">Tel : <a href="tel:+21620603970" style="color:inherit">20 603 970</a> - <a href="tel:+21625474035" style="color:inherit">25 474 035</a></div>
         </div>
         <a href="catalogue-decor-peint.pdf" target="_blank" rel="noopener" class="btn btn-o" style="font-size:10px;padding:9px 18px;margin-top:16px" data-i18n="ft_cat">Catalogue PDF</a>
       </div>
@@ -681,7 +713,10 @@
 
 <div class="lightbox" id="LB" role="dialog" aria-modal="true" aria-label="Aperçu de l'image">
   <span class="lightbox-close" id="LBC" aria-label="Fermer">&times;</span>
+  <span class="lb-nav lb-prev" id="LBP" aria-label="Précédent">&#10094;</span>
   <img src="" alt="" id="LBI" />
+  <span class="lb-nav lb-next" id="LBN" aria-label="Suivant">&#10095;</span>
+  <div class="lb-count" id="LBCN"></div>
 </div>
 
 <div class="toast" id="TOAST"><span id="TI">✓</span>&nbsp;<span id="TM"></span></div>
@@ -699,8 +734,8 @@ const BRANCH_MANNOUBA_WA    = '21650224490';                          /* ← Wha
 /* ════════════════════════════════════════════════════════
    SECTION B — BRANCH METADATA
    ════════════════════════════════════════════════════════ */
-const BRANCHES = [
-  { num:'01', nk:'b_mn', rk:'b_mn_r', phone:BRANCH_MANNOUBA_PHONE, wa:BRANCH_MANNOUBA_WA },
+let BRANCHES = [
+  { num:'01', nk:'b_mn', rk:'b_mn_r', phone:BRANCH_MANNOUBA_PHONE, wa:BRANCH_MANNOUBA_WA, gps:{lat:36.8123728433215,lng:10.11717353428965} },
 ];
 
 /* ════════════════════════════════════════════════════════
@@ -758,6 +793,7 @@ const D = {
   ca_cs: {fr:'Catalogue Produits',en:'Product Catalogue',ar:'كتالوج المنتجات'},
   ca_sub:{fr:"Découvrez l'intégralité de notre gamme : nuanciers, fiches techniques, conseils d'application et tarifs. Tout ce qu'il faut pour réussir votre projet.",en:"Discover our entire product range: colour charts, technical sheets, application advice and prices. Everything you need to succeed in your project.",ar:'اكتشف مجموعة منتجاتنا الكاملة: بطاقات الألوان والمواصفات التقنية ونصائح التطبيق والأسعار.'},
   ca_btn:{fr:'Voir le Catalogue PDF',en:'View PDF Catalogue',ar:'مشاهدة الكتالوج PDF'},
+  pc_cat:{fr:'Catalogue',en:'Catalogue',ar:'الكتالوج'},
   br_lbl:{fr:'Présence Régionale',en:'Regional Presence',ar:'حضورنا الإقليمي'},
   br_ttl:{fr:'Nos Agences',en:'Our Branches',ar:'فروعنا'},
   br_sub:{fr:'Quatre agences à votre service à travers la Tunisie.',en:'Four branches serving you across Tunisia.',ar:'أربعة فروع في خدمتكم عبر تونس.'},
@@ -765,6 +801,7 @@ const D = {
   b_mn_r:{fr:'Gouvernorat de la Manouba',en:'Manouba Governorate',ar:'ولاية منوبة'},
   br_ph: {fr:'Téléphone',en:'Phone',ar:'هاتف'},
   br_wa: {fr:'Écrire sur WhatsApp',en:'Chat on WhatsApp',ar:'تواصل عبر واتساب'},
+  br_gps:{fr:'Voir sur la carte',en:'View on map',ar:'عرض على الخريطة'},
   co_lbl:{fr:'Contactez-nous',en:'Get in Touch',ar:'تواصل معنا'},
   co_ttl:{fr:'Parlons de Votre Projet',en:"Let's Talk About Your Project",ar:'تحدث معنا عن مشروعك'},
   co_sub:{fr:"Notre équipe est disponible pour vous conseiller, établir un devis personnalisé ou répondre à toutes vos questions.",en:'Our team is available to advise you, prepare a personalised quote, or answer any of your questions.',ar:'فريقنا متاح لتقديم المشورة وإعداد عروض أسعار مخصصة والإجابة على جميع استفساراتكم.'},
@@ -795,12 +832,16 @@ const D = {
   ft_ag: {fr:'Agences',en:'Branches',ar:'الفروع'},
   ft_rg: {fr:'Tous droits réservés.',en:'All rights reserved.',ar:'جميع الحقوق محفوظة.'},
   ft_tn: {fr:'Tunisie 🇹🇳',en:'Tunisia 🇹🇳',ar:'تونس 🇹🇳'},
+  ba_title:{fr:'Résultat : Avant / Après',en:'Result: Before / After',ar:'النتيجة : قبل / بعد'},
+  ba_before:{fr:'Avant',en:'Before',ar:'قبل'},
+  ba_after:{fr:'Après',en:'After',ar:'بعد'},
 };
 
 /* ════════════════════════════════════════════════════════
    SECTION D — LANGUAGE ENGINE
    ════════════════════════════════════════════════════════ */
 let lang = 'fr';
+let LAST_CATS = null, LAST_PRODUCTS = null;
 const t = k => (D[k] && (D[k][lang] || D[k].fr)) || k;
 
 function setLang(l) {
@@ -818,41 +859,191 @@ function setLang(l) {
   Object.entries(ph).forEach(([id,v])=>{ const e=document.getElementById(id); if(e) e.placeholder=v[l]||v.fr; });
   renderBranches();
   renderFooter();
+  renderBranchSelect();
+  if (LAST_CATS) renderDynamicSections(LAST_CATS, LAST_PRODUCTS);
 }
 
 /* ════════════════════════════════════════════════════════
    SECTION E — BRANCH RENDERING
    ════════════════════════════════════════════════════════ */
 const WA_SVG = `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
+const FB_SVG = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.026 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.971H15.83c-1.491 0-1.956.93-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>`;
+const PIN_SVG = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>`;
+
+const bName   = b => b.nk ? t(b.nk) : ((b.name && (b.name[lang] || b.name.fr)) || b.name || '');
+const bRegion = b => b.rk ? t(b.rk) : ((b.region && (b.region[lang] || b.region.fr)) || b.region || '');
 
 function renderBranches() {
   const g = document.getElementById('BG');
   if (!g) return;
-  g.innerHTML = BRANCHES.map(b => `
+  g.innerHTML = BRANCHES.map(b => {
+    const phone = b.phone ? `<div class="bc-ci"><div class="bc-ico ph">📞</div><div><div class="bc-lbl">${t('br_ph')}</div><div class="bc-val"><a href="tel:${String(b.phone).replace(/\s/g,'')}" style="color:inherit">${b.phone}</a></div></div></div>` : '';
+    const wa = b.wa ? `<a href="https://wa.me/${String(b.wa).replace(/\D/g,'')}" target="_blank" rel="noopener" class="wa-card">
+        <img src="Untitled.jpeg" alt="WhatsApp" class="wa-img" loading="lazy">
+        <span class="wa-info"><span class="wa-lbl">WhatsApp</span><span class="wa-name">${bName(b)}</span></span>
+      </a>` : '';
+    const gps = b.gps ? `<a href="https://www.google.com/maps?q=${b.gps.lat},${b.gps.lng}" target="_blank" rel="noopener" class="wa-btn gps-btn">${PIN_SVG} ${t('br_gps')}</a>` : '';
+    return `
     <div class="bc">
       <div class="bc-t">
         <div class="bc-n0">${b.num}</div>
-        <div class="bc-nm">${t(b.nk)}</div>
-        <div class="bc-rg">${t(b.rk)}</div>
+        <div class="bc-nm">${bName(b)}</div>
+        <div class="bc-rg">${bRegion(b)}</div>
       </div>
       <div class="bc-b">
-        <div class="bc-ci">
-          <div class="bc-ico ph">📞</div>
-          <div>
-            <div class="bc-lbl">${t('br_ph')}</div>
-            <div class="bc-val"><a href="tel:${b.phone.replace(/\s/g,'')}" style="color:inherit">${b.phone}</a></div>
-          </div>
-        </div>
-        <a href="https://wa.me/${b.wa}" target="_blank" rel="noopener" class="wa-btn">
-          ${WA_SVG} ${t('br_wa')}
-        </a>
+        ${phone}
+        ${wa}
+        ${gps}
       </div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 }
 
 function renderFooter() {
   const fa = document.getElementById('FA');
-  if (fa) fa.innerHTML = BRANCHES.map(b => `<li><a href="#branches">${t(b.nk)}</a></li>`).join('');
+  if (fa) fa.innerHTML = BRANCHES.map(b => `<li><a href="#branches">${bName(b)}</a></li>`).join('');
+}
+
+function renderBranchSelect() {
+  const sel = document.getElementById('fb');
+  if (!sel) return;
+  const cur = sel.value;
+  sel.innerHTML = '';
+  const ph = document.createElement('option');
+  ph.value = '';
+  ph.textContent = t('f_br0');
+  sel.appendChild(ph);
+  BRANCHES.forEach(b => {
+    const o = document.createElement('option');
+    o.value = bName(b);
+    o.textContent = bName(b);
+    sel.appendChild(o);
+  });
+  sel.value = cur;
+}
+
+/* ════════════════════════════════════════════════════════
+   SECTION E2 — SANITY DATA (branches, settings, categories)
+   ════════════════════════════════════════════════════════ */
+const SANITY = { projectId: 'td7vyie0', dataset: 'production' };
+const PREVIEW = window.__PREVIEW_DATA__ || null;
+if (PREVIEW) {
+  const pb = document.getElementById('PREVIEWBAR');
+  if (pb) pb.style.display = 'flex';
+}
+const sanityUrl  = q => `https://${SANITY.projectId}.apicdn.sanity.io/v2021-06-07/data/query/${SANITY.dataset}?query=${encodeURIComponent(q)}`;
+async function sanityFetch(q) {
+  try {
+    const res = await fetch(sanityUrl(q));
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.result;
+  } catch (e) { return null; }
+}
+
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+const fmtTel = n => {
+  const d = String(n || '').replace(/\D/g, '').replace(/^216/, '');
+  return d.length === 8 ? d.slice(0,2)+' '+d.slice(2,5)+' '+d.slice(5) : d.replace(/(\d{2})(?=\d)/g, '$1 ');
+};
+
+let S = null;
+function quickLink(href, cls, icon, label) {
+  const ext = /^https?:/i.test(href) ? ' target="_blank" rel="noopener"' : '';
+  return `<a href="${href}" class="quick-call-btn ${cls}"${ext}>${icon}${label}</a>`;
+}
+function buildQuickBar() {
+  const qc = document.getElementById('QC');
+  if (!qc || !S) return;
+  const parts = [];
+  if (S.facebook) parts.push(quickLink(S.facebook, 'fb', FB_SVG, ' Facebook'));
+  if (S.whatsapp) parts.push(quickLink('https://wa.me/' + String(S.whatsapp).replace(/\D/g,''), 'wa', WA_SVG, ' ' + fmtTel(S.whatsapp)));
+  if (S.phone1)   parts.push(quickLink('tel:' + String(S.phone1).replace(/\D/g,'').replace(/^00/,'+'), 'phn', '📞 ' + fmtTel(S.phone1), ''));
+  if (S.phone2)   parts.push(quickLink('tel:' + String(S.phone2).replace(/\D/g,'').replace(/^00/,'+'), 'phn', '📞 ' + fmtTel(S.phone2), ''));
+  if (parts.length) qc.innerHTML = parts.join('');
+}
+async function loadSettings() {
+  const r = PREVIEW ? PREVIEW.settings : await sanityFetch(`*[_type == 'siteSettings'][0]{ whatsapp, phone1, phone2, facebook, email, slideshowEnabled, slideshowInterval, slideshowPauseOnHover, "baPairs": baPairs[]{ "before": before.asset->url, "after": after.asset->url } }`);
+  if (!r) return;
+  S = r;
+  buildQuickBar();
+  const em = document.getElementById('CTEMAIL');
+  if (em && r.email) em.textContent = r.email;
+  const tt = document.getElementById('FTTEL');
+  if (tt && (r.phone1 || r.phone2)) {
+    const a = r.phone1 ? `<a href="tel:+${String(r.phone1).replace(/\D/g,'')}" style="color:inherit">${fmtTel(r.phone1)}</a>` : '';
+    const b = r.phone2 ? `<a href="tel:+${String(r.phone2).replace(/\D/g,'')}" style="color:inherit">${fmtTel(r.phone2)}</a>` : '';
+    tt.innerHTML = 'Tel : ' + [a, b].filter(Boolean).join(' - ');
+  }
+  renderBASlideshow();
+}
+
+/* ── BA slideshow ────────────────────────── */
+let BA_PAIRS = [], BA_IDX = 0, BA_TIMER = null;
+const DEFAULT_BA = [
+  { before: '480250861_624864696808719_794406399008617300_n.jpg', after: '480213260_624864516808737_7053424218306797544_n.jpg' },
+];
+
+function renderBASlideshow() {
+  const el = document.getElementById('BASLID');
+  const dots = document.getElementById('BADOTS');
+  if (!el) return;
+  BA_PAIRS = (S && S.baPairs && S.baPairs.length) ? S.baPairs : DEFAULT_BA;
+  if (!BA_PAIRS.length) { el.innerHTML = ''; if (dots) dots.innerHTML = ''; return; }
+  BA_IDX = 0;
+  el.innerHTML = BA_PAIRS.map((p, i) => `
+    <div class="ba-slide${i === 0 ? ' active' : ''}">
+      <div class="ba-img-box">
+        <img src="${esc(p.before)}" alt="Avant">
+        <div class="ba-tag ba-tag-before" data-i18n="ba_before">Avant</div>
+      </div>
+      <div class="ba-img-box">
+        <img src="${esc(p.after)}" alt="Après">
+        <div class="ba-tag ba-tag-after" data-i18n="ba_after">Après</div>
+      </div>
+    </div>`).join('');
+  if (dots) {
+    if (BA_PAIRS.length > 1) {
+      dots.innerHTML = BA_PAIRS.map((_, i) =>
+        `<button class="ba-dot${i === 0 ? ' active' : ''}" data-i="${i}"></button>`
+      ).join('');
+      dots.onclick = e => { const b = e.target.closest('.ba-dot'); if (b) { BA_IDX = +b.dataset.i; showBASlide(BA_IDX); resetBATimer(); } };
+    } else { dots.innerHTML = ''; }
+  }
+  if (S.slideshowEnabled !== false && BA_PAIRS.length > 1) startBATimer();
+}
+function showBASlide(idx) {
+  const slides = document.querySelectorAll('.ba-slide');
+  const dots = document.querySelectorAll('.ba-dot');
+  if (!slides.length) return;
+  BA_IDX = ((idx % slides.length) + slides.length) % slides.length;
+  slides.forEach((s, i) => s.classList.toggle('active', i === BA_IDX));
+  dots.forEach((d, i) => d.classList.toggle('active', i === BA_IDX));
+}
+function startBATimer() { stopBATimer(); BA_TIMER = setInterval(() => showBASlide(BA_IDX + 1), (S.slideshowInterval || 3) * 1000); }
+function stopBATimer() { if (BA_TIMER) { clearInterval(BA_TIMER); BA_TIMER = null; } }
+function resetBATimer() { if (S && S.slideshowEnabled !== false) startBATimer(); else stopBATimer(); }
+(function() {
+  const basEl = document.getElementById('BAS');
+  if (!basEl) return;
+  basEl.addEventListener('mouseenter', () => { if (S && S.slideshowPauseOnHover !== false) stopBATimer(); });
+  basEl.addEventListener('mouseleave', resetBATimer);
+})();
+async function loadBranches() {
+  const r = PREVIEW ? PREVIEW.branches : await sanityFetch(`*[_type == 'branch'] | order(order asc){ name, nameEn, nameAr, region, regionEn, regionAr, phone, whatsapp, "lat": gps.lat, "lng": gps.lng }`);
+  if (!r || !r.length) return;
+  BRANCHES = r.map((b, i) => ({
+    num: String(i + 1).padStart(2, '0'),
+    name:   { fr: b.name,             en: b.nameEn || b.name,             ar: b.nameAr || b.name },
+    region: { fr: b.region,           en: b.regionEn || b.region,         ar: b.regionAr || b.region },
+    phone:  b.phone,
+    wa:     b.whatsapp,
+    gps:    (b.lat != null && b.lng != null) ? { lat: b.lat, lng: b.lng } : null,
+  }));
+  renderBranches();
+  renderFooter();
+  renderBranchSelect();
 }
 
 /* ════════════════════════════════════════════════════════
@@ -861,7 +1052,10 @@ function renderFooter() {
 document.addEventListener('DOMContentLoaded', () => {
   renderBranches();
   renderFooter();
+  renderBranchSelect();
   loadProducts();
+  loadBranches();
+  loadSettings();
 
   document.querySelectorAll('.fi0,.fi1,.fi2,.fi3,.fi4').forEach(el => {
     el.style.animation = 'fup .7s ease forwards';
@@ -896,35 +1090,38 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ════════════════════════════════════════════════════════
    SECTION H — PRODUCTS FROM SANITY STUDIO
    ════════════════════════════════════════════════════════ */
-const SANITY = { projectId: 'td7vyie0', dataset: 'production' };
-
 async function loadProducts() {
-  const query = `*[_type == 'product'] { title, description, category, "image": image.asset->url, "gallery": gallery[].asset->url }`;
-  const url = `https://${SANITY.projectId}.apicdn.sanity.io/v2021-06-07/data/query/${SANITY.dataset}?query=${encodeURIComponent(query)}`;
-  try {
-    const res = await fetch(url);
-    if (!res.ok) return;
-    const data = await res.json();
-    const products = data.result || [];
-    if (!products.length) return;
-    renderProducts(products);
-  } catch (e) { /* keep static fallback cards */ }
+  const products = PREVIEW ? PREVIEW.products : await sanityFetch(`*[_type == 'product'] { title, description, category, "image": image.asset->url, "gallery": gallery[].asset->url, "catalog": catalog.asset->url, catalogLabel }`);
+  if (!products || !products.length) return;
+  LAST_PRODUCTS = products;
+  const cats = PREVIEW ? PREVIEW.categories : await sanityFetch(`*[_type == 'category'] | order(order asc){ key, name, nameEn, nameAr }`);
+  LAST_CATS = cats && cats.length ? cats : null;
+  if (LAST_CATS) renderDynamicSections(LAST_CATS, products);
+  else renderProducts(products);
 }
 
+const card = p => {
+  const gallery = (p.gallery || []).filter(g => g && g !== p.image);
+  const galHTML = gallery.length
+    ? `<div class="product-gallery-list">${gallery.map(g => `<img src="${esc(g)}" alt="${esc(p.title || '')}" loading="lazy">`).join('')}</div>`
+    : '';
+  const catHTML = p.catalog
+    ? `<a href="${esc(p.catalog)}" target="_blank" rel="noopener" class="pc-cat-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+        <span>${esc(p.catalogLabel || t('pc_cat'))}</span>
+      </a>`
+    : '';
+  return `
+  <div class="pc">
+    <div class="pc-img">${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.title || '')}" loading="lazy">` : `<div class="pc-img-fb"><div class="pc-ic">🎨</div></div>`}</div>
+    <div class="pc-t">${esc(p.title || '')}</div>
+    ${p.description ? `<div class="pc-d">${esc(p.description)}</div>` : ''}
+    ${galHTML}
+    ${catHTML}
+  </div>`;
+};
+
 function renderProducts(products) {
-  const card = p => {
-    const gallery = (p.gallery || []).filter(g => g && g !== p.image);
-    const galHTML = gallery.length
-      ? `<div class="product-gallery-list">${gallery.map(g => `<img src="${g}" alt="${p.title || ''}" loading="lazy">`).join('')}</div>`
-      : '';
-    return `
-    <div class="pc">
-      <div class="pc-img">${p.image ? `<img src="${p.image}" alt="${p.title || ''}" loading="lazy">` : `<div class="pc-img-fb"><div class="pc-ic">🎨</div></div>`}</div>
-      <div class="pc-t">${p.title || ''}</div>
-      ${p.description ? `<div class="pc-d">${p.description}</div>` : ''}
-      ${galHTML}
-    </div>`;
-  };
   const set = (id, cat) => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -933,6 +1130,26 @@ function renderProducts(products) {
   };
   set('interior-products-container', 'interior');
   set('exterior-products-container', 'exterior');
+}
+
+function renderDynamicSections(cats, products) {
+  const wrap = document.getElementById('dynCats');
+  if (!wrap) return;
+  const used = cats.filter(c => c.key && products.some(p => (p.category || '').toLowerCase() === c.key));
+  if (!used.length) { renderProducts(products); return; }
+  document.querySelectorAll('#paints .pcat').forEach(el => { el.removeAttribute('id'); el.style.display = 'none'; });
+  wrap.innerHTML = used.map(c => {
+    const list = products.filter(p => (p.category || '').toLowerCase() === c.key);
+    const name = lang === 'ar' ? (c.nameAr || c.name) : (lang === 'en' ? (c.nameEn || c.name) : c.name);
+    return `
+    <div class="pcat" id="${esc(c.key)}">
+      <div class="pch">
+        <div class="pci">🎨</div>
+        <h3 class="pcn">${esc(name)}</h3>
+      </div>
+      <div class="g3">${list.map(card).join('')}</div>
+    </div>`;
+  }).join('');
 }
 
 /* ════════════════════════════════════════════════════════
@@ -949,19 +1166,45 @@ function toast(ic, msg) {
 /* ── lightbox ────────────────────────────── */
 const LB  = document.getElementById('LB');
 const LBI = document.getElementById('LBI');
+const LBCN= document.getElementById('LBCN');
+let LB_LIST = [];
+let LB_IDX  = 0;
 function closeLB() { if (LB) LB.classList.remove('on'); }
+function showLB(idx) {
+  if (!LB_LIST.length) return;
+  LB_IDX = Math.max(0, Math.min(LB_LIST.length - 1, idx));
+  const it = LB_LIST[LB_IDX];
+  LBI.src = it.src;
+  LBI.alt = it.alt || '';
+  if (LBCN) LBCN.textContent = LB_LIST.length > 1 ? (LB_IDX + 1) + ' / ' + LB_LIST.length : '';
+  LB.classList.add('on');
+}
+function lbStep(d) { showLB(LB_IDX + d); }
 document.addEventListener('click', e => {
   const t = e.target;
   if (t && t.tagName === 'IMG' && !t.closest('.lightbox')) {
-    LBI.src = t.currentSrc || t.src;
-    LBI.alt = t.alt || '';
-    LB.classList.add('on');
+    const pc = t.closest('.pc');
+    if (pc) {
+      const imgs = pc.querySelectorAll('.pc-img img, .product-gallery-list img');
+      LB_LIST = [...imgs].map(i => ({ src: i.currentSrc || i.src, alt: i.alt || '' }));
+      const src = t.currentSrc || t.src;
+      showLB(LB_LIST.findIndex(x => x.src === src));
+    } else {
+      LB_LIST = [{ src: t.currentSrc || t.src, alt: t.alt || '' }];
+      showLB(0);
+    }
   }
 });
 if (LB) {
   document.getElementById('LBC').addEventListener('click', closeLB);
+  document.getElementById('LBP').addEventListener('click', e => { e.stopPropagation(); lbStep(-1); });
+  document.getElementById('LBN').addEventListener('click', e => { e.stopPropagation(); lbStep(1); });
   LB.addEventListener('click', e => { if (e.target === LB) closeLB(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLB();
+    if (e.key === 'ArrowLeft') lbStep(-1);
+    if (e.key === 'ArrowRight') lbStep(1);
+  });
 }
 
 window.addEventListener('scroll', () => {
