@@ -1006,7 +1006,8 @@ const DEFAULT_BA = [
 function renderBASliders() {
   const el = document.getElementById('BASLID');
   if (!el) return;
-  const pairs = (S && S.baPairs && S.baPairs.length) ? S.baPairs : DEFAULT_BA;
+  const sPairs = (S && Array.isArray(S.baPairs) ? S.baPairs : []).filter(p => p && p.before && p.after);
+  const pairs = sPairs.length ? sPairs : DEFAULT_BA;
   if (!pairs.length) { el.innerHTML = ''; return; }
   el.innerHTML = pairs.map((p, i) => `
     <div class="ba-card">
@@ -1074,6 +1075,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderBranches();
   renderFooter();
   renderBranchSelect();
+  renderBASliders();
   loadProducts();
   loadBranches();
   loadSettings();
