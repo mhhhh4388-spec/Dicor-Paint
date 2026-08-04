@@ -96,6 +96,8 @@
     .quick-call-btn.fb:hover{box-shadow:0 8px 22px rgba(24,119,242,.55)}
     .quick-call-btn.wa{background:linear-gradient(135deg,#34d17a,#128c4a);border-color:rgba(255,255,255,.22);color:#fff;box-shadow:0 4px 14px rgba(37,211,102,.35)}
     .quick-call-btn.wa:hover{box-shadow:0 8px 22px rgba(37,211,102,.55)}
+    .quick-call-btn.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%);border-color:rgba(255,255,255,.22);color:#fff;box-shadow:0 4px 14px rgba(214,36,159,.35)}
+    .quick-call-btn.ig:hover{box-shadow:0 8px 22px rgba(214,36,159,.55)}
     .quick-call-btn.phn{background:rgba(201,164,101,.1);border-color:rgba(201,164,101,.35);color:var(--gold-lt)}
     .quick-call-btn.phn:hover{background:rgba(201,164,101,.2);box-shadow:0 6px 16px rgba(201,164,101,.25)}
 
@@ -447,7 +449,7 @@
       </div>
       <div class="hiw fi2">
         <div class="hif">
-          <img src="showroom-decorpaint.png" alt="DECOR PAINT" loading="eager" />
+          <img src="showroom-decorpaint.png" id="HEROIMG" alt="DECOR PAINT" loading="eager" />
         </div>
         <div class="hbg">
           <div class="hbn">4</div>
@@ -639,7 +641,7 @@
           <div>
             <div class="ci-lbl" data-i18n="co_a_l">Sièges & Agences</div>
             <div class="ci-val">
-              <a href="https://www.google.com/maps?q=36.8123728433215,10.11717353428965" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;" data-i18n="co_a_v">Mannouba</a>
+              <a href="https://www.google.com/maps?q=36.8123728433215,10.11717353428965" id="CTADDR" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;" data-i18n="co_a_v">Mannouba</a>
             </div>
           </div>
         </div>
@@ -686,6 +688,7 @@
             <p class="fok-s" data-i18n="f_ok_s">Nous vous répondrons dans les meilleurs délais. Merci de votre confiance.</p>
           </div>
         </div>
+        <div class="map-wrap" id="MAPEMBED" style="margin-top:26px"></div>
       </div>
     </div>
   </div>
@@ -703,7 +706,7 @@
         <div class="ft-ci">
           <div class="ft-ci-n">STE DECOR PAINT</div>
           <div class="ft-ci-a">FABRICATION DE TOUTE SORTE DE PEINTURE ITALIENNE</div>
-          <div class="ft-ci-r">Adresse : 001. Hssan Ennouri Ksar Said 2009</div>
+          <div class="ft-ci-r" id="FTADDR">Adresse : 001. Hssan Ennouri Ksar Said 2009</div>
           <div class="ft-ci-r" id="FTTEL">Tel : <a href="tel:+21620603970" style="color:inherit">20 603 970</a> - <a href="tel:+21625474035" style="color:inherit">25 474 035</a></div>
         </div>
         <a href="catalogue-decor-peint.pdf" target="_blank" rel="noopener" class="btn btn-o" style="font-size:10px;padding:9px 18px;margin-top:16px" data-i18n="ft_cat">Catalogue PDF</a>
@@ -897,6 +900,7 @@ function setLang(l) {
 const WA_SVG = `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
 const FB_SVG = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047v-2.66c0-3.026 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.971H15.83c-1.491 0-1.956.93-1.956 1.886v2.265h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>`;
 const PIN_SVG = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>`;
+const IG_SVG = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>`;
 
 const bName   = b => b.nk ? t(b.nk) : ((b.name && (b.name[lang] || b.name.fr)) || b.name || '');
 const bRegion = b => b.rk ? t(b.rk) : ((b.region && (b.region[lang] || b.region.fr)) || b.region || '');
@@ -986,24 +990,55 @@ function buildQuickBar() {
   if (!qc || !S) return;
   const parts = [];
   if (S.facebook) parts.push(quickLink(S.facebook, 'fb', FB_SVG, ' Facebook'));
+  if (S.instagram) parts.push(quickLink(S.instagram, 'ig', IG_SVG, ' Instagram'));
   if (S.whatsapp) parts.push(quickLink('https://wa.me/' + String(S.whatsapp).replace(/\D/g,''), 'wa', WA_SVG, ' ' + fmtTel(S.whatsapp)));
   if (S.phone1)   parts.push(quickLink('tel:' + String(S.phone1).replace(/\D/g,'').replace(/^00/,'+'), 'phn', '📞 ' + fmtTel(S.phone1), ''));
   if (S.phone2)   parts.push(quickLink('tel:' + String(S.phone2).replace(/\D/g,'').replace(/^00/,'+'), 'phn', '📞 ' + fmtTel(S.phone2), ''));
   if (parts.length) qc.innerHTML = parts.join('');
 }
 async function loadSettings() {
-  const r = PREVIEW ? PREVIEW.settings : await sanityFetch(`*[_type == 'siteSettings'][0]{ whatsapp, phone1, phone2, facebook, email, slideshowEnabled, slideshowInterval, slideshowPauseOnHover, "baPairs": baPairs[]{ title, category, "before": before.asset->url, "after": after.asset->url } }`);
+  const r = PREVIEW ? PREVIEW.settings : await sanityFetch(`*[_type == 'siteSettings'][0]{
+    title, whatsapp, phone1, phone2, email, address, mapsLink, mapsEmbed, facebook, instagram,
+    slideshowEnabled, slideshowInterval, slideshowPauseOnHover,
+    "heroImages": heroImages[].asset->url,
+    "baPairs": baPairs[]{ title, category, "before": before.asset->url, "after": after.asset->url },
+    "catalogPdf": catalogPdf.asset->url
+  }`);
   if (!r) return;
   S = r;
   buildQuickBar();
-  const em = document.getElementById('CTEMAIL');
-  if (em && r.email) em.textContent = r.email;
+  const setText = (id, v) => { const el = document.getElementById(id); if (el && v) el.textContent = v; };
+
+  setText('CTEMAIL', r.email);
+  setText('FTADDR', r.address ? 'Adresse : ' + r.address : '');
+
+  const addr = document.getElementById('CTADDR');
+  if (addr) {
+    if (r.address) addr.textContent = r.address;
+    if (r.mapsLink) addr.href = r.mapsLink;
+  }
+
   const tt = document.getElementById('FTTEL');
   if (tt && (r.phone1 || r.phone2)) {
     const a = r.phone1 ? `<a href="tel:+${String(r.phone1).replace(/\D/g,'')}" style="color:inherit">${fmtTel(r.phone1)}</a>` : '';
     const b = r.phone2 ? `<a href="tel:+${String(r.phone2).replace(/\D/g,'')}" style="color:inherit">${fmtTel(r.phone2)}</a>` : '';
     tt.innerHTML = 'Tel : ' + [a, b].filter(Boolean).join(' - ');
   }
+
+  const hero = document.getElementById('HEROIMG');
+  if (hero && r.heroImages && r.heroImages.length) hero.src = r.heroImages[0];
+
+  if (r.catalogPdf) {
+    document.querySelectorAll('a[href*="catalogue-decor-peint.pdf"]').forEach(a => { a.href = r.catalogPdf; });
+    applyMobilePDF();
+  }
+
+  const map = document.getElementById('MAPEMBED');
+  if (map && r.mapsEmbed) map.innerHTML = `<iframe src="${esc(r.mapsEmbed)}" width="100%" height="260" style="border:0;border-radius:10px" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Google Maps"></iframe>`;
+
+  const form = document.getElementById('CF');
+  if (form && r.email) form.action = 'https://formsubmit.co/' + r.email;
+
   renderBASliders();
 }
 
