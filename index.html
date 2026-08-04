@@ -9,7 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Tajawal:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="icon" href="favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
   <style>
     :root {
       --bg:       #0d0d0d;
@@ -336,12 +337,16 @@
       .ft-bot{flex-direction:column;gap:10px;text-align:center}
       .nl{display:none}
       .nt{display:flex}
-      .nl.op{display:flex;flex-direction:column;position:fixed;top:114px;left:0;right:0;background:rgba(8,8,8,.97);backdrop-filter:blur(16px);padding:28px 24px;border-bottom:1px solid var(--brd);gap:22px;z-index:999}
+      body{padding-top:84px}
+      .nav{top:84px}
+      html{scroll-padding-top:175px}
+      .preview-bar{top:84px}
+      .nl.op{display:flex;flex-direction:column;position:fixed;top:152px;left:0;right:0;background:rgba(8,8,8,.97);backdrop-filter:blur(16px);padding:28px 24px;border-bottom:1px solid var(--brd);gap:22px;z-index:999}
       .nl.op a{font-size:14px}
       .ha{flex-direction:column}
       .ha .btn{width:100%;justify-content:center}
       .hero{padding:90px 0 56px}
-      .contact-numbers{height:auto;min-height:52px;gap:6px;padding:6px 8px;justify-content:center;flex-wrap:wrap}
+      .contact-numbers{height:84px;min-height:84px;align-content:center;gap:6px;padding:6px 8px;justify-content:center;flex-wrap:wrap;overflow-x:auto;overflow-y:auto}
     }
     @media(max-width:480px){
       .wrap{padding:0 18px}
